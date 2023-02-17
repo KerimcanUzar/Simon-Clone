@@ -1,0 +1,202 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://res/Swansea.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Control.gd" type="Script" id=2]
+[ext_resource path="res://font.tres" type="DynamicFontData" id=3]
+[ext_resource path="res://Swansea.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://res/Red.png" type="Texture" id=5]
+[ext_resource path="res://res/White.png" type="Texture" id=6]
+[ext_resource path="res://res/Green.png" type="Texture" id=7]
+[ext_resource path="res://res/Blue.png" type="Texture" id=8]
+[ext_resource path="res://start.tres" type="StyleBox" id=9]
+[ext_resource path="res://retry.tres" type="StyleBox" id=10]
+
+[sub_resource type="ImageTexture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0.666667, 0, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://res/Swansea.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 144
+outline_size = 3
+use_filter = true
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 38
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0.666667, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Control" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 2 )
+
+[node name="Boxes" type="GridContainer" parent="."]
+margin_left = 180.0
+margin_top = 180.0
+margin_right = 900.0
+margin_bottom = 900.0
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 2
+
+[node name="C1" type="TextureRect" parent="Boxes"]
+modulate = Color( 1, 1, 1, 0.666667 )
+margin_right = 360.0
+margin_bottom = 360.0
+rect_min_size = Vector2( 360, 360 )
+rect_clip_content = true
+texture = SubResource( 6 )
+
+[node name="Red" type="Sprite" parent="Boxes/C1"]
+position = Vector2( 180, 180 )
+texture = ExtResource( 5 )
+
+[node name="C2" type="TextureRect" parent="Boxes"]
+modulate = Color( 1, 1, 1, 0.666667 )
+margin_left = 360.0
+margin_right = 720.0
+margin_bottom = 360.0
+rect_min_size = Vector2( 360, 360 )
+rect_clip_content = true
+
+[node name="Green" type="Sprite" parent="Boxes/C2"]
+position = Vector2( 180, 180 )
+rotation = 1.5708
+texture = ExtResource( 7 )
+
+[node name="C3" type="TextureRect" parent="Boxes"]
+modulate = Color( 1, 1, 1, 0.666667 )
+margin_top = 360.0
+margin_right = 360.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 360, 360 )
+rect_clip_content = true
+
+[node name="Blue" type="Sprite" parent="Boxes/C3"]
+position = Vector2( 180, 180 )
+rotation = -1.5708
+texture = ExtResource( 8 )
+
+[node name="C4" type="TextureRect" parent="Boxes"]
+modulate = Color( 1, 1, 1, 0.666667 )
+margin_left = 360.0
+margin_top = 360.0
+margin_right = 720.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 360, 360 )
+rect_clip_content = true
+
+[node name="White" type="Sprite" parent="Boxes/C4"]
+position = Vector2( 180, 180 )
+rotation = 3.14159
+texture = ExtResource( 6 )
+
+[node name="Blocker" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 180.0
+margin_top = 180.0
+margin_right = 900.0
+margin_bottom = 900.0
+
+[node name="Start" type="Button" parent="."]
+margin_left = 412.0
+margin_top = 1539.0
+margin_right = 646.0
+margin_bottom = 1648.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
+text = "START"
+
+[node name="Level" type="Label" parent="."]
+margin_top = 1382.0
+margin_right = 1080.0
+margin_bottom = 1430.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "LEVEL: 1"
+align = 1
+valign = 1
+
+[node name="GameOver" type="ColorRect" parent="."]
+visible = false
+margin_right = 1080.0
+margin_bottom = 1920.0
+color = Color( 0.0901961, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="GameOver"]
+margin_left = 114.0
+margin_top = 906.0
+margin_right = 966.0
+margin_bottom = 790.0
+custom_colors/font_color = Color( 1, 0.188235, 0.188235, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "GAME OVER"
+
+[node name="Points" type="Label" parent="GameOver"]
+margin_top = 1200.0
+margin_right = 1080.0
+margin_bottom = 1269.0
+custom_colors/font_color = Color( 1, 0.921569, 0.4, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "0 POINTS"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Retry" type="Button" parent="GameOver"]
+margin_left = 373.0
+margin_top = 1415.0
+margin_right = 708.0
+margin_bottom = 1525.0
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = ExtResource( 10 )
+custom_styles/normal = ExtResource( 10 )
+text = "RETRY"
+
+[connection signal="gui_input" from="Boxes/C1" to="." method="_on_C1_gui_input"]
+[connection signal="gui_input" from="Boxes/C2" to="." method="_on_C2_gui_input"]
+[connection signal="gui_input" from="Boxes/C3" to="." method="_on_C3_gui_input"]
+[connection signal="gui_input" from="Boxes/C4" to="." method="_on_C4_gui_input"]
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="GameOver/Retry" to="." method="_on_Retry_pressed"]
